@@ -1,6 +1,7 @@
 import csv
 import collections
 from collections import defaultdict
+import operator
 
 
 
@@ -19,7 +20,8 @@ def summary():
     del d['Zip Code']
     print("Zipcode crimes")
     for key in d:
-        print ("%s   %s" %(key,d[key])) 
+        print ("%s   %s" %(key,d[key]))
+    f_ptr.close()
 
 
 def vic_count():
@@ -49,12 +51,12 @@ def vic_count():
     for key in e:
         for key in g:
             h[(g[key])]=e[key]
+    
+    sorted_h = sorted(h.items(), key=operator.itemgetter(1))
     for key in h:
       print (key,h[key])
-    
-    #sorted_h = sorted(h.items(), key=operator.itemgetter(0))
-    
-
+    o_ptr.close()
+    i_ptr.close()
 
 def console():
     a=input()
